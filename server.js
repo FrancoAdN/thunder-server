@@ -28,12 +28,19 @@ mercadopago.preferences.create(preference)
 */
 const express = require('express')
 const path = require('path')
+const graphqlHTTP = require('express-graphql')
+const schema = require('./schema')
 
 const app = express()
 const PORT = 3000
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static('public'))
+
+app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true
+}))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
