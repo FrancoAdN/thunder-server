@@ -17,7 +17,7 @@ const RootQuery = new GraphQLObjectType({
         champions: {
             type: new GraphQLList(ChampionType),
             args: {
-                lanes: { type: GraphQLList }
+                lanes: { type: new GraphQLList(GraphQLString) }
             },
             resolve: async (parent, args) => {
                 let sql
