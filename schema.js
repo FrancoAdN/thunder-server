@@ -14,20 +14,23 @@ const ChampionType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     fields: {
-        type: new GraphQLList(ChampionType),
-        args: {
-            lanes: { type: GraphQLList }
-        },
-        resolve: async (parent, args) => {
-            let sql
-            if (args.lanes.length === 0) {
-                sql = 'SELECT * FROM champions'
-            } else {
-                sql = 'SELECT * FROM champions'
-            }
-            return await querysql(sql)
+        champions: {
+            type: new GraphQLList(ChampionType),
+            args: {
+                lanes: { type: GraphQLList }
+            },
+            resolve: async (parent, args) => {
+                let sql
+                if (args.lanes.length === 0) {
+                    sql = 'SELECT * FROM champions'
+                } else {
+                    sql = 'SELECT * FROM champions'
+                }
+                return await querysql(sql)
 
+            }
         }
+
     }
 })
 
