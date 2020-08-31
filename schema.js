@@ -24,7 +24,12 @@ const RootQuery = new GraphQLObjectType({
                 if (args.lanes.length === 0) {
                     sql = 'SELECT * FROM champions'
                 } else {
-                    sql = 'SELECT * FROM champions'
+                    let lanes = ''
+                    for (let lane of args.lanes) {
+                        lanes += `"${lane}",`
+                    }
+                    lanes = lanes.split(0, -1)
+                    sql = `SELECT * FROM champions WHERE id_champ IN(SELECT DISTINCT id_champ FROM lanes WHERE lane_name IN(${lanes}))`
                 }
                 return await querysql(sql)
 
