@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = require('graphql')
+const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList, GraphQLSchema } = require('graphql')
 const querysql = require('./database')
 
 const ChampionType = new GraphQLObjectType({
@@ -29,4 +29,8 @@ const RootQuery = new GraphQLObjectType({
 
         }
     }
+})
+
+module.exports = new GraphQLSchema({
+    query: RootQuery
 })
