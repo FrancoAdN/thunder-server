@@ -30,6 +30,7 @@ const RootQuery = new GraphQLObjectType({
                     }
                     lanes = lanes.split(0, -1)
                     sql = `SELECT * FROM champions WHERE id_champ IN(SELECT DISTINCT id_champ FROM lanes WHERE lane_name IN(${lanes}))`
+                    console.log(sql)
                 }
                 return await querysql(sql)
 
