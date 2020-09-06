@@ -26,7 +26,7 @@ const RootQuery = new GraphQLObjectType({
                 } else {
                     let lanes = ''
                     for (let index = 0; index < args.lanes.length; index++) {
-                        const element = args.lanes[index];
+                        const lane = args.lanes[index];
                         if (index !== args.lanes.length - 1)
                             lanes += `"${lane}",`
                         else
