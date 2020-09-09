@@ -59,7 +59,8 @@ app.post('/process_payment', (req, res) => {
             res.sendStatus(response.status)
         })
         .catch(function (error) {
-            res.status(response.status).send(error);
+            console.log(error)
+            res.sendStatus(400);
         });
 })
 
