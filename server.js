@@ -39,7 +39,7 @@ app.post('/process_payment', (req, res) => {
         description: req.body.description,
         installments: Number(req.body.installments),
         payment_method_id: req.body.paymentMethodId,
-        issuer_id: req.body.issuer,
+        issuer_id: req.body.issuer || req.body.issuer_id,
         payer: {
             email: req.body.email,
             identification: {
@@ -48,6 +48,8 @@ app.post('/process_payment', (req, res) => {
             }
         }
     };
+
+
 
     mercadopago.payment.save(payment_data)
         .then(function (response) {
