@@ -96,7 +96,7 @@ app.post('/boost', (req, res) => {
 
     const mailOptions = {
         from: "boostingthunder@gmail.com",
-        to: "sr.dina.fdn@gmail.com; tomasveratec@gmail.com;",
+        to: "sr.dina.fdn@gmail.com; tomasveratec@gmail.com; lautaro0611@gmail.com;",
         subject: "Nuevo client thunder",
         text
     }
